@@ -17,7 +17,7 @@
 
 @property(strong , nonatomic)CBLocation *to;
 
-@property(assign , nonatomic)int value;
+@property(assign , nonatomic)NSInteger value;
 
 -(instancetype)initWithPieceKey:(NSString *)key from:(CBLocation *)from to:(CBLocation *)to;
 @end
