@@ -8,7 +8,7 @@
 
 #import "CBCGameView.h"
 #import "CBCChessView.h"
-
+#import "CBCSearchModel.h"
 static int SY_COE =41,SX_COE = 41;
 
 static int SY_OFFSET =2.5,SX_OFFSET = 2.5;
@@ -35,9 +35,8 @@ static int SY_OFFSET =2.5,SX_OFFSET = 2.5;
     _control = control;
 }
 
--(instancetype)initWithBoard:(CBCBoard *)board{
-    self = [super init];
-    if (self) {
+-(void)setWithBoard:(CBCBoard *)board{
+    
         self.pieceObject = [NSMutableDictionary dictionary];
         self.userInteractionEnabled = YES;
         self.board = board;
@@ -55,8 +54,7 @@ static int SY_OFFSET =2.5,SX_OFFSET = 2.5;
             [self.pieceObject setObject:chessVeiw forKey:key];
             [self addSubview:chessVeiw];
         }
-    }
-    return self;
+  
 }
 
 -(CBLocation *)modelToViewConverter:(CBLocation *)loc{
@@ -75,7 +73,9 @@ static int SY_OFFSET =2.5,SX_OFFSET = 2.5;
     
 }
 
-
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self run];
+}
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     UITouch *touch = [touches anyObject];
     UIView *touchView = [touch view];
@@ -106,6 +106,7 @@ static int SY_OFFSET =2.5,SX_OFFSET = 2.5;
                     [self.pieceObject removeObjectForKey:key];
                     [self.board updatePiece:self.selectedKey newLocation:loca];
                     [self movePieceFromModel:self.selectedKey toLocation:loca];
+           //         self.board.player = (self.board.player == 'r') ? 'b' : 'r';
 //                    if (self.board.player=='r') {
 //                        self.board.player = 'b';
 //                    }else{
@@ -144,6 +145,7 @@ static int SY_OFFSET =2.5,SX_OFFSET = 2.5;
                   //  [self.pieceObject removeObjectForKey:key];
                     [self.board updatePiece:self.selectedKey newLocation:loca];
                     [self movePieceFromModel:self.selectedKey toLocation:loca];
+                  //  self.board.player = (self.board.player == 'r') ? 'b' : 'r';
                     //                    if (self.board.player=='r') {
                     //                        self.board.player = 'b';
                     //                    }else{
@@ -160,6 +162,19 @@ static int SY_OFFSET =2.5,SX_OFFSET = 2.5;
     
 
 }
+-(void)movePieceFromAI:(NSString *)pieceKey location:(CBLocation *)to{
+    CBCPiece *inNewLoc = [self.board getPieceWithLocation:to];
+    if (![inNewLoc.key isEqualToString:@"nil"]&&inNewLoc!=nil) {
+        CBCChessView *pieceView = self.pieceObject[inNewLoc.key];
+        [pieceView removeFromSuperview];
+        [self.pieceObject removeObjectForKey:inNewLoc.key];
+        
+    }
+    CBCChessView *pieceObject = self.pieceObject[pieceKey];
+    CBLocation *sloc = [self modelToViewConverter:to];
+    pieceObject.layer.position = CGPointMake(sloc.x+20, sloc.y+20);
+    self.selectedKey = nil;
+}
 -(void)movePieceFromModel:(NSString *)pieceKey toLocation:(CBLocation *)loc{
     CBCChessView *chess = self.pieceObject[pieceKey];
     
@@ -175,7 +190,46 @@ static int SY_OFFSET =2.5,SX_OFFSET = 2.5;
     return self;
 }
 
-
+-(void)run{
+    if (self.board.player == 'b') {
+        char win = [self.control hasWin:self.board];
+       
+            CBCSearchModel *searchModel = [[CBCSearchModel alloc]init];
+            CBCAlpaBetaNode *result = [searchModel search:self.board];
+            [self movePieceFromAI:result.piece location:result.to];
+            [self.board updatePiece:result.piece newLocation:result.to];
+            if ([self.control hasWin:self.board]!='x') {
+                return ;
+            }
+        
+       
+    }
+   
+    //    if ([self.control hasWin:self.board]=='x') {
+    //        NSTimer *timer = [NSTimer timerWithTimeInterval:10 repeats:YES block:^(NSTimer * _Nonnull timer) {
+    //            if (self.board.player=='r') {
+    //                NSTimer*tt =  [NSTimer timerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+    //                    NSLog(@"r");
+    //
+    //                }];
+    //                [[NSRunLoop currentRunLoop]addTimer:timer forMode:NSRunLoopCommonModes];
+    //            }
+    //            CBCSearchModel *searchModel = [[CBCSearchModel alloc]init];
+    //            CBCAlpaBetaNode *result = [searchModel search:self.board];
+    //            [self.gameView movePieceFromAI:result.piece location:result.to];
+    //            [self.board updatePiece:result.piece newLocation:result.to];
+    //            if ([self.control hasWin:self.board]!='x') {
+    //                return ;
+    //            }
+    //        }];
+    //        [[NSRunLoop currentRunLoop]addTimer:timer forMode:NSRunLoopCommonModes];
+    //       // [self run];
+    //    }
+    
+    
+    
+    
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

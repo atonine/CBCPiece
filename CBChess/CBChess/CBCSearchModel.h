@@ -13,5 +13,5 @@
 @interface CBCSearchModel : NSObject
 
 -(CBCAlpaBetaNode *)search:(CBCBoard *)board;
-
+-(CBCAlpaBetaNode *)search2:(CBCBoard *)board;
 @end

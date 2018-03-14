@@ -335,7 +335,7 @@
         }
         else{
             for (int i = 0; i<3; i++) {
-                int *aTarget = targetD[i];
+                int *aTarget = targetU[i];
                 CBLocation *e = [[CBLocation alloc]init];
                 e.x = self.location.x +aTarget[0];
                 e.y = self.location.y +aTarget[1];
@@ -364,7 +364,7 @@
         }
         else{
             for (int i = 0; i<3; i++) {
-                int *aTarget = targetU[i];
+                int *aTarget = targetD[i];
                 CBLocation *e = [[CBLocation alloc]init];
                 e.x = self.location.x +aTarget[0];
                 e.y = self.location.y +aTarget[1];

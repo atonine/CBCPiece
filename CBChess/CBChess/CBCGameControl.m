@@ -90,7 +90,7 @@ static CBCGameControl *_instance;
     [pieces setValue:rb0 forKey:@"rb0"];
     CBCPiece *rs1= [self setPieceWithName:@"rs1" x:9 y:5];
     [pieces setValue:rs1 forKey:@"rs1"];
-    CBCPiece *rx1= [self setPieceWithName:@"bx1" x:9 y:6];
+    CBCPiece *rx1= [self setPieceWithName:@"rx1" x:9 y:6];
     [pieces setValue:rx1 forKey:@"rx1"];
     CBCPiece *rm1= [self setPieceWithName:@"rm1" x:9 y:7];
     [pieces setValue:rm1 forKey:@"rm1"];
@@ -118,7 +118,7 @@ static CBCGameControl *_instance;
     CBCPiece *rz3= [self setPieceWithName:@"rz3" x:6 y:6];
     
     [pieces setValue:rz3 forKey:@"rz3"];
-    CBCPiece *rz4= [self setPieceWithName:@"rz3" x:6 y:8];
+    CBCPiece *rz4= [self setPieceWithName:@"rz4" x:6 y:8];
     
     [pieces setValue:rz4 forKey:@"rz4"];
     
