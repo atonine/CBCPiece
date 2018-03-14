@@ -29,14 +29,16 @@ static int SY_OFFSET =2.5,SX_OFFSET = 2.5;
 
 @end
 
-@implementation CBCGameView
+@implementation CBCGameView{
+ //   BOOL eated;
+}
 
 -(void)setControl:(CBCGameControl *)control{
     _control = control;
 }
 
 -(void)setWithBoard:(CBCBoard *)board{
-    
+      //  eated = NO;
         self.pieceObject = [NSMutableDictionary dictionary];
         self.userInteractionEnabled = YES;
         self.board = board;
@@ -74,7 +76,7 @@ static int SY_OFFSET =2.5,SX_OFFSET = 2.5;
 }
 
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [self run];
+ //   [self run];
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     UITouch *touch = [touches anyObject];
@@ -100,6 +102,7 @@ static int SY_OFFSET =2.5,SX_OFFSET = 2.5;
             CBLocation *selectLoc = selectPie.location;
             for (CBLocation *loca in [CBCRules getNextMoveWithPiece:self.selectedKey location:selectLoc board:self.board]) {
                 if (loca.x == loc.x&&loca.y == loc.y) {
+                //    eated = YES;
                     NSString *key = view.key;
                     
                     [view removeFromSuperview];

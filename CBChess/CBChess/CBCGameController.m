@@ -50,7 +50,7 @@ String : CBCChessView
     [self.gameView setWithBoard:self.board];
     [self.view addSubview:self.gameView];
     [super viewDidLoad];
-  //  [self run2];
+    [self run3];
     // Do any additional setup after loading the view.
 }
 
@@ -118,6 +118,26 @@ String : CBCChessView
             }];
             [[NSRunLoop currentRunLoop]addTimer:timer forMode:NSRunLoopCommonModes];
            // [self run];
+    
+}
+-(void)run3{
+    NSTimer *timer = [NSTimer timerWithTimeInterval:0.1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        if (self.board.player=='r') {
+            
+            
+            return ;
+            
+        }
+        CBCSearchModel *searchModel = [[CBCSearchModel alloc]init];
+        CBCAlpaBetaNode *result = [searchModel search:self.board];
+        [self.gameView movePieceFromAI:result.piece location:result.to];
+        [self.board updatePiece:result.piece newLocation:result.to];
+        if ([self.control hasWin:self.board]!='x') {
+            return ;
+        }
+    }];
+    [[NSRunLoop currentRunLoop]addTimer:timer forMode:NSRunLoopCommonModes];
+    // [self run];
     
 }
 /*
