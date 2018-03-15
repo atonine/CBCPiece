@@ -109,6 +109,8 @@ static int SY_OFFSET =2.5,SX_OFFSET = 2.5;
                     [self.pieceObject removeObjectForKey:key];
                     [self.board updatePiece:self.selectedKey newLocation:loca];
                     [self movePieceFromModel:self.selectedKey toLocation:loca];
+                    NSArray *arr = [self.board.pieceMap allKeys];
+                    NSLog(@"%zd",arr.count);
            //         self.board.player = (self.board.player == 'r') ? 'b' : 'r';
 //                    if (self.board.player=='r') {
 //                        self.board.player = 'b';

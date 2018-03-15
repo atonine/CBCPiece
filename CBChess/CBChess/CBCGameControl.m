@@ -72,7 +72,7 @@ static CBCGameControl *_instance;
     CBCPiece *bz3= [self setPieceWithName:@"bz3" x:3 y:6];
     
     [pieces setValue:bz3 forKey:@"bz3"];
-    CBCPiece *bz4= [self setPieceWithName:@"bz3" x:3 y:8];
+    CBCPiece *bz4= [self setPieceWithName:@"bz4" x:3 y:8];
     
     [pieces setValue:bz4 forKey:@"bz4"];
     
@@ -164,9 +164,11 @@ static CBCGameControl *_instance;
 }
 
 -(char)hasWin:(CBCBoard *)board{
-    if (board.pieceMap[@"bb0"]==nil) {
+    CBCPiece *bb = board.pieceMap[@"bb0"];
+    CBCPiece *rb = board.pieceMap[@"rb0"];
+    if (bb==nil||[bb.key isEqualToString:@"nil"]) {
         return 'r';
-    }else if(board.pieceMap[@"rb0"]==nil){
+    }else if(rb==nil||[rb.key isEqualToString:@"nil"]){
         return 'b';
     }else{
         return 'x';

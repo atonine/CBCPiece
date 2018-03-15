@@ -9,10 +9,11 @@
 #import "CBCEvalModel.h"
 
 @implementation CBCEvalModel{
-    int value[2][2];
+   
 }
 
 -(int)eval:(CBCBoard *)board player:(char)player{
+     int value[2][2] = {{0,0},{0,0}};
     NSArray *allkeys  = board.pieceMap.allKeys;
     for (NSString *key in allkeys) {
         CBCPiece *piece = board.pieceMap[key];
@@ -83,16 +84,25 @@
                 break;
         }
     }
+    int gg = 0;
     int sumRed = value[0][0] + value[0][1] * 8, sumBlack = value[1][0] + value[1][1] * 8;
     switch (player) {
-        case 'r':
-            return sumRed - sumBlack;
-        case 'b':
-            return sumBlack - sumRed;
-        default:
-            return -1;
+        case 'r':{
+            gg = sumRed - sumBlack;
+            break;
+        }
+            
+        case 'b':{
+            gg = sumBlack - sumRed;
+            break;
+        }
+        default:{
+            gg = -1;
+            break;
+        }
+            
     }
-    return 0;
+    return gg;
 }
 
 -(int)evalPieceValue:(int)p{
@@ -162,9 +172,9 @@
         
     }if (p==6) {
         return zPosition[pos.x][pos.y];
-    }else{
-        return -1;
     }
+    return -1;
+    
 }
 -(int)evalPieceControl{
     return 0;

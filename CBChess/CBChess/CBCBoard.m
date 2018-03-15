@@ -19,7 +19,7 @@
 -(CBCPiece *)updatePiece:(NSString *)key newLocation:(CBLocation *)location{
     CBCPiece *orig = self.pieceMap[key];
     CBCPiece *newLocPiece = [self getPieceWithLocation:location];
-    if (newLocPiece==nil||[newLocPiece.key isEqualToString: @"nil"]) {
+    if (newLocPiece!=nil||![newLocPiece.key isEqualToString: @"nil"]) {
         [self.pieceMap removeObjectForKey:newLocPiece.key];
     }
     CBLocation *origLoc = orig.location;
@@ -73,7 +73,7 @@
         piece = self.cells[x][y];
     }
    
-    BOOL isNil = ([piece.key isEqualToString: @"nil"]);
+    BOOL isNil = ([piece.key isEqualToString: @"nil"]||piece == nil);
     return ([self isInsideWithLocation:location]&&isNil);
 }
 

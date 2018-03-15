@@ -52,7 +52,7 @@ static int DEPTH = 2;
         if (best == nil || n.value >= best.value)
             best = n;
         [_board updatePiece:n.piece newLocation:n.from];
-        if (eaten!=nil) {
+        if (eaten!=nil&&![eaten.key isEqualToString:@"nil"]) {
             [board.pieceMap setValue:eaten forKey:eaten.key];
             [board backPiece:eaten.key];
         }
@@ -81,15 +81,22 @@ static int DEPTH = 2;
         const NSInteger c_beta = beta;
         const NSInteger c_depth = depth;
         
-   //      NSInteger temp;
+        __block NSInteger temp = 0;
         if (depth == 2) {
             if (isMax) {
-                alpha = MAX(c_alpha, [self alphaBeta:c_depth-1 alpha:c_alpha beta:c_beta isMax:NO]);
+                dispatch_queue_t queue =  dispatch_queue_create("new1", DISPATCH_QUEUE_SERIAL);
+                dispatch_sync(queue, ^{
+                    temp = MAX(c_alpha, [self alphaBeta:c_depth-1 alpha:c_alpha beta:c_beta isMax:NO]);
+                });
+                alpha = temp;
                 
                
             }else{
-                
-                beta = MIN(c_beta, [self alphaBeta:c_depth-1 alpha:c_alpha beta:c_beta isMax:YES]);
+                dispatch_queue_t queue =  dispatch_queue_create("new2", DISPATCH_QUEUE_SERIAL);
+                dispatch_sync(queue, ^{
+                    temp= MIN(c_beta, [self alphaBeta:c_depth-1 alpha:c_alpha beta:c_beta isMax:YES]);
+                });
+                beta = temp;
                 
             }
         }else{
@@ -100,7 +107,7 @@ static int DEPTH = 2;
             }
         }
         [_board updatePiece:n.piece newLocation:n.from];
-        if (eaten !=nil) {
+        if (eaten!=nil&&![eaten.key isEqualToString:@"nil"]) {
             [_board.pieceMap setValue:eaten forKey:eaten.key];
             [_board backPiece:eaten.key];
         }
@@ -120,12 +127,14 @@ static int DEPTH = 2;
             continue;
         }if (!isMax && piece.color == 'b') {
             continue;
+        }else{
+            for (CBLocation * loc in [CBCRules getNextMoveWithPiece:key location:piece.location board:_board]) {
+                CBCAlpaBetaNode *bn = [[CBCAlpaBetaNode alloc]initWithPieceKey:key from:piece.location to:loc];
+                [moves addObject:bn];
+                
+            }
         }
-        for (CBLocation * loc in [CBCRules getNextMoveWithPiece:key location:piece.location board:_board]) {
-            CBCAlpaBetaNode *bn = [[CBCAlpaBetaNode alloc]initWithPieceKey:key from:piece.location to:loc];
-            [moves addObject:bn];
-            
-        }
+       
     }
     return moves;
 }

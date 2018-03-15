@@ -133,6 +133,7 @@ String : CBCChessView
         [self.gameView movePieceFromAI:result.piece location:result.to];
         [self.board updatePiece:result.piece newLocation:result.to];
         if ([self.control hasWin:self.board]!='x') {
+            NSLog(@"结束了");
             return ;
         }
     }];
