@@ -13,6 +13,6 @@
 
 -(void)movePieceFromAI:(NSString *)pieceKey location:(CBLocation *)to;
 
--(void)setWithBoard:(CBCBoard *)board;
+-(instancetype)initWithBoard:(CBCBoard *)board frame:(CGRect)frame;
 
 @end

@@ -15,7 +15,7 @@
 /**
  qishitu
  */
-@property (weak, nonatomic) IBOutlet CBCGameView *gameView;
+@property (strong, nonatomic)  CBCGameView *gameView;
 /**
  <#注释#>
  */
@@ -47,7 +47,8 @@ String : CBCChessView
 - (void)viewDidLoad {
    // CBCGameControl *control = [[CBCGameControl alloc]init];
     self.board = [self.control startChess];
-    [self.gameView setWithBoard:self.board];
+    self.gameView = [[CBCGameView alloc] initWithBoard:self.board frame:CGRectMake(16, 116, 343, 398)];
+    self.gameView .image = [UIImage imageNamed:@"ChessBoard.png"];
     [self.view addSubview:self.gameView];
     [super viewDidLoad];
     [self run3];

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		2B2DCC7D2046D3A40056BC98 /* CBCChessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B2DCC7C2046D3A40056BC98 /* CBCChessView.m */; };
 		2B2DCC7F2046D55E0056BC98 /* ChessGameController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B2DCC7E2046D55E0056BC98 /* ChessGameController.storyboard */; };
+		2B300385205BCB310055FCC7 /* CBIBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B300384205BCB310055FCC7 /* CBIBoard.m */; };
+		2B300388205BCCB40055FCC7 /* CBIGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B300387205BCCB40055FCC7 /* CBIGameController.m */; };
+		2B30038B205BCEEE0055FCC7 /* CBIGameControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B30038A205BCEEE0055FCC7 /* CBIGameControl.m */; };
+		2B3ADF71205B9ACA00801717 /* CBIRules.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3ADF70205B9ACA00801717 /* CBIRules.m */; };
 		2B43CB75204BFEF3005C9F54 /* CBCGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B43CB74204BFEF3005C9F54 /* CBCGameView.m */; };
 		2B43CB79204C178C005C9F54 /* CBCGameControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B43CB78204C178C005C9F54 /* CBCGameControl.m */; };
 		2B5BECE3203D4CE900B8118F /* CBCAlpaBetaNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BECE2203D4CE900B8118F /* CBCAlpaBetaNode.m */; };
@@ -27,6 +31,8 @@
 		2B5FC32520396FC700CBA529 /* CBCBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5FC32420396FC700CBA529 /* CBCBoard.m */; };
 		2B9AD735204584C600F33225 /* CBCSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9AD734204584C600F33225 /* CBCSearchModel.m */; };
 		2B9AD73A2045863F00F33225 /* CBCGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9AD7392045863F00F33225 /* CBCGameController.m */; };
+		2BF3FD3D205E779100A8000D /* ichessCtrl.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BF3FD3C205E779100A8000D /* ichessCtrl.storyboard */; };
+		2BF3FD40205E788600A8000D /* CBIGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3FD3F205E788600A8000D /* CBIGameView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +56,14 @@
 		2B2DCC7B2046D3A40056BC98 /* CBCChessView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBCChessView.h; sourceTree = "<group>"; };
 		2B2DCC7C2046D3A40056BC98 /* CBCChessView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBCChessView.m; sourceTree = "<group>"; };
 		2B2DCC7E2046D55E0056BC98 /* ChessGameController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChessGameController.storyboard; sourceTree = "<group>"; };
+		2B300383205BCB310055FCC7 /* CBIBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBIBoard.h; sourceTree = "<group>"; };
+		2B300384205BCB310055FCC7 /* CBIBoard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBIBoard.m; sourceTree = "<group>"; };
+		2B300386205BCCB40055FCC7 /* CBIGameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBIGameController.h; sourceTree = "<group>"; };
+		2B300387205BCCB40055FCC7 /* CBIGameController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBIGameController.m; sourceTree = "<group>"; };
+		2B300389205BCEEE0055FCC7 /* CBIGameControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBIGameControl.h; sourceTree = "<group>"; };
+		2B30038A205BCEEE0055FCC7 /* CBIGameControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBIGameControl.m; sourceTree = "<group>"; };
+		2B3ADF6F205B9ACA00801717 /* CBIRules.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBIRules.h; sourceTree = "<group>"; };
+		2B3ADF70205B9ACA00801717 /* CBIRules.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBIRules.m; sourceTree = "<group>"; };
 		2B43CB73204BFEF3005C9F54 /* CBCGameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBCGameView.h; sourceTree = "<group>"; };
 		2B43CB74204BFEF3005C9F54 /* CBCGameView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBCGameView.m; sourceTree = "<group>"; };
 		2B43CB77204C178C005C9F54 /* CBCGameControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBCGameControl.h; sourceTree = "<group>"; };
@@ -86,6 +100,9 @@
 		2B9AD734204584C600F33225 /* CBCSearchModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBCSearchModel.m; sourceTree = "<group>"; };
 		2B9AD7382045863F00F33225 /* CBCGameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBCGameController.h; sourceTree = "<group>"; };
 		2B9AD7392045863F00F33225 /* CBCGameController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBCGameController.m; sourceTree = "<group>"; };
+		2BF3FD3C205E779100A8000D /* ichessCtrl.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ichessCtrl.storyboard; sourceTree = "<group>"; };
+		2BF3FD3E205E788600A8000D /* CBIGameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBIGameView.h; sourceTree = "<group>"; };
+		2BF3FD3F205E788600A8000D /* CBIGameView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBIGameView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +135,8 @@
 			children = (
 				2B43CB77204C178C005C9F54 /* CBCGameControl.h */,
 				2B43CB78204C178C005C9F54 /* CBCGameControl.m */,
+				2B300389205BCEEE0055FCC7 /* CBIGameControl.h */,
+				2B30038A205BCEEE0055FCC7 /* CBIGameControl.m */,
 			);
 			name = control;
 			sourceTree = "<group>";
@@ -221,6 +240,10 @@
 				2B5FC32120396ECF00CBA529 /* CBCRules.m */,
 				2B5FC32320396FC700CBA529 /* CBCBoard.h */,
 				2B5FC32420396FC700CBA529 /* CBCBoard.m */,
+				2B3ADF6F205B9ACA00801717 /* CBIRules.h */,
+				2B3ADF70205B9ACA00801717 /* CBIRules.m */,
+				2B300383205BCB310055FCC7 /* CBIBoard.h */,
+				2B300384205BCB310055FCC7 /* CBIBoard.m */,
 			);
 			name = chess;
 			sourceTree = "<group>";
@@ -231,6 +254,9 @@
 				2B9AD7382045863F00F33225 /* CBCGameController.h */,
 				2B9AD7392045863F00F33225 /* CBCGameController.m */,
 				2B2DCC7E2046D55E0056BC98 /* ChessGameController.storyboard */,
+				2B300386205BCCB40055FCC7 /* CBIGameController.h */,
+				2B300387205BCCB40055FCC7 /* CBIGameController.m */,
+				2BF3FD3C205E779100A8000D /* ichessCtrl.storyboard */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -242,6 +268,8 @@
 				2B2DCC7C2046D3A40056BC98 /* CBCChessView.m */,
 				2B43CB73204BFEF3005C9F54 /* CBCGameView.h */,
 				2B43CB74204BFEF3005C9F54 /* CBCGameView.m */,
+				2BF3FD3E205E788600A8000D /* CBIGameView.h */,
+				2BF3FD3F205E788600A8000D /* CBIGameView.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -356,6 +384,7 @@
 				2B5FC2F2203947E600CBA529 /* LaunchScreen.storyboard in Resources */,
 				2B2DCC7F2046D55E0056BC98 /* ChessGameController.storyboard in Resources */,
 				2B5FC2EF203947E600CBA529 /* Assets.xcassets in Resources */,
+				2BF3FD3D205E779100A8000D /* ichessCtrl.storyboard in Resources */,
 				2B5FC2ED203947E600CBA529 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,14 +412,19 @@
 			files = (
 				2B43CB79204C178C005C9F54 /* CBCGameControl.m in Sources */,
 				2B9AD735204584C600F33225 /* CBCSearchModel.m in Sources */,
+				2B3ADF71205B9ACA00801717 /* CBIRules.m in Sources */,
 				2B9AD73A2045863F00F33225 /* CBCGameController.m in Sources */,
 				2B5BECE6203D79D800B8118F /* CBCEvalModel.m in Sources */,
 				2B5FC2EA203947E600CBA529 /* ViewController.m in Sources */,
 				2B5FC32520396FC700CBA529 /* CBCBoard.m in Sources */,
 				2B5FC2E7203947E600CBA529 /* AppDelegate.m in Sources */,
 				2B5FC32220396ECF00CBA529 /* CBCRules.m in Sources */,
+				2B300388205BCCB40055FCC7 /* CBIGameController.m in Sources */,
 				2B5BECE3203D4CE900B8118F /* CBCAlpaBetaNode.m in Sources */,
+				2BF3FD40205E788600A8000D /* CBIGameView.m in Sources */,
 				2B5FC2E4203947E600CBA529 /* main.m in Sources */,
+				2B30038B205BCEEE0055FCC7 /* CBIGameControl.m in Sources */,
+				2B300385205BCB310055FCC7 /* CBIBoard.m in Sources */,
 				2B5FC31A2039488600CBA529 /* CBCPiece.m in Sources */,
 				2B43CB75204BFEF3005C9F54 /* CBCGameView.m in Sources */,
 				2B2DCC7D2046D3A40056BC98 /* CBCChessView.m in Sources */,

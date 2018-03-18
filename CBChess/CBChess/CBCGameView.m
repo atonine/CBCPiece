@@ -37,11 +37,12 @@ static int SY_OFFSET =2.5,SX_OFFSET = 2.5;
     _control = control;
 }
 
--(void)setWithBoard:(CBCBoard *)board{
+-(instancetype)initWithBoard:(CBCBoard *)board frame:(CGRect)frame{
       //  eated = NO;
-        self.pieceObject = [NSMutableDictionary dictionary];
+    if (self = [super initWithFrame:frame]) {
+        _pieceObject = [NSMutableDictionary dictionary];
         self.userInteractionEnabled = YES;
-        self.board = board;
+        _board = board;
         NSDictionary *dic = board.pieceMap;
         NSArray *keys = [dic allKeys];
         for (NSString *key in keys) {
@@ -53,9 +54,11 @@ static int SY_OFFSET =2.5,SX_OFFSET = 2.5;
             chessVeiw.key = key;
             NSString *imageName = [NSString stringWithFormat:@"%@.png",[key substringWithRange:NSMakeRange(0, 2)]];
             [chessVeiw setImage:[UIImage imageNamed:imageName]];
-            [self.pieceObject setObject:chessVeiw forKey:key];
+            [_pieceObject setObject:chessVeiw forKey:key];
             [self addSubview:chessVeiw];
         }
+    }
+    return self;
   
 }
 
