@@ -33,6 +33,7 @@
 		2B9AD73A2045863F00F33225 /* CBCGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B9AD7392045863F00F33225 /* CBCGameController.m */; };
 		2BF3FD3D205E779100A8000D /* ichessCtrl.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BF3FD3C205E779100A8000D /* ichessCtrl.storyboard */; };
 		2BF3FD40205E788600A8000D /* CBIGameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3FD3F205E788600A8000D /* CBIGameView.m */; };
+		2BF3FD43205FD7AB00A8000D /* CBISearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF3FD42205FD7AB00A8000D /* CBISearchModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,8 @@
 		2BF3FD3C205E779100A8000D /* ichessCtrl.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ichessCtrl.storyboard; sourceTree = "<group>"; };
 		2BF3FD3E205E788600A8000D /* CBIGameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBIGameView.h; sourceTree = "<group>"; };
 		2BF3FD3F205E788600A8000D /* CBIGameView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBIGameView.m; sourceTree = "<group>"; };
+		2BF3FD41205FD7AB00A8000D /* CBISearchModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBISearchModel.h; sourceTree = "<group>"; };
+		2BF3FD42205FD7AB00A8000D /* CBISearchModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBISearchModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +153,8 @@
 				2B5BECE5203D79D800B8118F /* CBCEvalModel.m */,
 				2B9AD733204584C600F33225 /* CBCSearchModel.h */,
 				2B9AD734204584C600F33225 /* CBCSearchModel.m */,
+				2BF3FD41205FD7AB00A8000D /* CBISearchModel.h */,
+				2BF3FD42205FD7AB00A8000D /* CBISearchModel.m */,
 			);
 			name = algrithm;
 			sourceTree = "<group>";
@@ -418,6 +423,7 @@
 				2B5FC2EA203947E600CBA529 /* ViewController.m in Sources */,
 				2B5FC32520396FC700CBA529 /* CBCBoard.m in Sources */,
 				2B5FC2E7203947E600CBA529 /* AppDelegate.m in Sources */,
+				2BF3FD43205FD7AB00A8000D /* CBISearchModel.m in Sources */,
 				2B5FC32220396ECF00CBA529 /* CBCRules.m in Sources */,
 				2B300388205BCCB40055FCC7 /* CBIGameController.m in Sources */,
 				2B5BECE3203D4CE900B8118F /* CBCAlpaBetaNode.m in Sources */,

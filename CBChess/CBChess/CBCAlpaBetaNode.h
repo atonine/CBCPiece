@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CBCBoard.h"
-
+#import "CBIBoard.h"
 @interface CBCAlpaBetaNode : NSObject
 
 @property (strong , nonatomic) NSString *piece;

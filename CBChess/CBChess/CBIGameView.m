@@ -11,7 +11,7 @@
 
 static int SY_COE =43,SX_COE = 46;
 
-static int SY_OFFSET =0,SX_OFFSET = 0;
+static int SY_OFFSET =21.5,SX_OFFSET = 23;
 
 @interface CBIGameView()
 
@@ -52,7 +52,7 @@ static int SY_OFFSET =0,SX_OFFSET = 0;
             CBCPiece *piece =  dic[key];
             CBLocation *loc = piece.location;
             CBLocation*sloc = [self modelToViewConverter:loc];
-            CBCChessView *chessVeiw = [[CBCChessView alloc]initWithFrame:CGRectMake(sloc.x, sloc.y, 43, 45)];
+            CBCChessView *chessVeiw = [[CBCChessView alloc]initWithFrame:CGRectMake(sloc.x-SY_OFFSET, sloc.y-SX_OFFSET, 43, 46)];
             chessVeiw.userInteractionEnabled = YES;
             chessVeiw.key = key;
             NSString *imageName = [NSString stringWithFormat:@"%@.png",[key substringWithRange:NSMakeRange(0, 2)]];
@@ -68,12 +68,12 @@ static int SY_OFFSET =0,SX_OFFSET = 0;
 -(CBLocation *)modelToViewConverter:(CBLocation *)loc{
     CBLocation *sloc = [[CBLocation alloc]init];
     sloc.y = loc.x * SX_COE+SX_OFFSET;
-    sloc.x = loc.y * SY_COE +SY_OFFSET;
+    sloc.x = loc.y * SY_COE+SY_OFFSET;
     return sloc;
 }
 -(CBLocation *)viewToModelConverter:(CBLocation *)sloc{
     CBLocation *loc = [[CBLocation alloc]init];
-    int y = (sloc.x -SX_OFFSET)/SX_COE;
+    int y = (sloc.x )/SX_COE;
     int x = (sloc.y -SY_OFFSET)/SY_COE;
     loc.x = x;
     loc.y = y;
@@ -107,7 +107,8 @@ static int SY_OFFSET =0,SX_OFFSET = 0;
             CBLocation *loc = pie.location;
             CBCPiece *selectPie = self.board.pieceMap[self.selectedKey];
             CBLocation *selectLoc = selectPie.location;
-            for (CBLocation *loca in [CBIRules getNextMoveWithPiece:self.selectedKey location:selectLoc board:self.board]) {
+            NSArray *array = [CBIRules getNextMoveWithPiece:self.selectedKey location:selectLoc board:self.board];
+            for (CBLocation *loca in array ) {
                 if (loca.x == loc.x&&loca.y == loc.y) {
                     //    eated = YES;
                     NSString *key = view.key;
@@ -187,6 +188,8 @@ static int SY_OFFSET =0,SX_OFFSET = 0;
     pieceObject.layer.position = CGPointMake(sloc.x, sloc.y);
     self.selectedKey = nil;
 }
+
+
 -(void)movePieceFromModel:(NSString *)pieceKey toLocation:(CBLocation *)loc{
     CBCChessView *chess = self.pieceObject[pieceKey];
     

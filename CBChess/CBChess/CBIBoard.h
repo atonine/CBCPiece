@@ -10,9 +10,9 @@
 
 #import "CBCPiece.h"
 
-#define BOARD_HEIGHT  8
+#define IBOARD_HEIGHT  8
 
-#define BOARD_WIDTH  8
+#define IBOARD_WIDTH  8
 
 
 @interface CBIBoard : NSObject

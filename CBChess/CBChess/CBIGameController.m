@@ -8,6 +8,7 @@
 
 #import "CBIGameController.h"
 #import "CBIGameView.h"
+#import "CBISearchModel.h"
 @interface CBIGameController ()
 @property (strong, nonatomic) CBIGameView *gameView;
 
@@ -39,7 +40,8 @@
     _gameView = [[CBIGameView alloc]initWithBoard:self.board frame:CGRectMake(16, 114, 343, 368)];
     _gameView.image = [UIImage imageNamed:@"ichessboard.jpg"];
     [self.view addSubview:self.gameView];
-    // Do any additional setup after loading the view.
+ //  [self run];
+  //  // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,5 +65,24 @@
     // Pass the selected object to the new view controller.
 }
 */
+-(void)run{
+    NSTimer *timer = [NSTimer timerWithTimeInterval:0.1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        if (self.board.player=='w') {
+            
+            
+            return ;
+            
+        }
+        CBISearchModel *searchModel = [[CBISearchModel alloc]init];
+        CBCAlpaBetaNode *result = [searchModel search2:self.board];
+        [self.gameView movePieceFromAI:result.piece location:result.to];
+        [self.board updatePiece:result.piece newLocation:result.to];
+        if ([self.control hasWin:self.board]!='x') {
+            NSLog(@"结束了");
+            return ;
+        }
+    }];
+    [[NSRunLoop currentRunLoop]addTimer:timer forMode:NSRunLoopCommonModes];
+}
 
 @end

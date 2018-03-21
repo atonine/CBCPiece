@@ -39,9 +39,9 @@
 -(NSMutableArray *)cells{
     if (_cells==nil) {
         _cells = [NSMutableArray arrayWithCapacity:11];
-        for (int i = 0; i<=8; i++) {
+        for (int i = 0; i<8; i++) {
             NSMutableArray * arr = [NSMutableArray arrayWithCapacity:11];
-            for (int i = 0; i<=8; i++) {
+            for (int i = 0; i<8; i++) {
                 CBCPiece *pie = [[CBCPiece alloc]init];
                 pie.key = @"nil";
                 pie.location.x = -1;
@@ -55,20 +55,24 @@
     return _cells;
 }
 -(CBCPiece *)getPieceWithLocation:(CBLocation *)location{
+    if (![self isInsideWithLocation:location]) {
+        return nil;
+    }else{
     int x = location.x;
     int y = location.y;
     
     return self.cells[x][y];
+    }
 }
 
 -(BOOL)isInsideWithLocation:(CBLocation *)location{
-    return !(location.x<0||location.x>=BOARD_HEIGHT||location.y<0||location.y>=BOARD_WIDTH);
+    return !(location.x<0||location.x >=IBOARD_HEIGHT||location.y<0||location.y>=IBOARD_WIDTH);
 }
 -(BOOL)IsEmpty:(CBLocation *)location{
     int x = location.x;
     int y = location.y;
     CBCPiece *piece = [[CBCPiece alloc]init];
-    if (x<0||y<0||x>=BOARD_HEIGHT||y>=BOARD_WIDTH) {
+    if (x<0||y<0||x>=IBOARD_HEIGHT||y>=IBOARD_WIDTH) {
         return false;
     }else{
         piece = self.cells[x][y];

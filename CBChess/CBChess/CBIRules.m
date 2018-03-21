@@ -54,49 +54,294 @@
     return moves;
 }
 -(NSArray *)qRules{
-    int target[][2] = {{1,1},{1,-1},{-1,1},{-1,-1},{1,0},{-1,0},{0,1},{0,-1},
-        {2,2},{2,-2},{-2,2},{-2,-2},{2,0},{-2,0},{0,2},{0,-2},
-        {3,3},{3,-3},{-3,3},{-3,-3},{3,0},{-3,0},{0,3},{0,-3},
-        {4,4},{4,-4},{-4,4},{-4,-4},{4,0},{-4,0},{0,4},{0,-4},
-        {5,5},{5,-5},{-5,5},{-5,-5},{5,0},{-5,0},{0,5},{0,-5},
-        {6,6},{6,-6},{-6,6},{-6,-6},{6,0},{-6,0},{0,6},{0,-6},
-        {7,7},{7,-7},{-7,7},{-7,-7},{7,0},{-7,0},{0,7},{0,-7}
-    };
+    int rigtDown[][2] = {{1,1},{2,2},{3,3},{4,4},{5,5},{6,6},{7,7}};
+    int rigtUp[][2] = {{-1,1},{-2,2},{-3,3},{-4,4},{-5,5},{-6,6},{-7,7}};
+    int leftDown[][2] = {{1,-1},{2,-2},{3,-3},{4,-4},{5,-5},{6,-6},{7,-7}};
+    int leftUp[][2] = {{-1,-1},{-2,-2},{-3,-3},{-4,-4},{-5,-5},{-6,-6},{-7,-7}};
+    int left[][2] = {{0,-1},{0,-2},{0,-3},{0,-4},{0,-5},{0,-6},{0,-7}};
+    int right[][2] = {{0,1},{0,2},{0,3},{0,4},{0,5},{0,6},{0,7}};
+    int down[][2] = {{1,0},{2,0},{3,0},{4,0},{5,0},{6,0},{7,0}};
+    int up[][2] = {{-1,0},{-2,0},{-3,0},{-4,0},{-5,0},{-6,0},{-7,0}};
     NSMutableArray *moves = [NSMutableArray array];
-    for (int i=0; i<4; i++) {
+    for (int i = 0; i < 7; i++) {
+        
+        int rdTargetX = rigtDown[i][0];
+        int rdTargetY = rigtDown[i][1];
         CBLocation *e = [[CBLocation alloc]init];
-        e.x = self.location.x + target[i][0];
-        e.x = self.location.y + target[i][1];
-        if (![self.board isInsideWithLocation:e]) {
-            continue;
-        }else if([self.board isInsideWithLocation:e]&&[self.board getPieceWithLocation:e].color!=self.player){
+        e.x = self.location.x + rdTargetX;
+        e.y = self.location.y + rdTargetY;
+        BOOL isNil = [self.board IsEmpty:e];
+        if (isNil) {
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
             [moves addObject:e];
-        }else if ([self.board IsEmpty:e]){
+        }else if ([self.board isInsideWithLocation:e]&&[self.board getPieceWithLocation:e].color != self.player){
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
             [moves addObject:e];
+            break;
+            
+        }else{
+            break;
+        }
+    }
+    for (int i = 0; i < 7; i++) {
+        
+        int rdTargetX = leftDown[i][0];
+        int rdTargetY = leftDown[i][1];
+        CBLocation *e = [[CBLocation alloc]init];
+        e.x = self.location.x + rdTargetX;
+        e.y = self.location.y + rdTargetY;
+        BOOL isNil = [self.board IsEmpty:e];
+        if (isNil) {
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
+            [moves addObject:e];
+        }else if ([self.board isInsideWithLocation:e]&&[self.board getPieceWithLocation:e].color != self.player){
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
+            [moves addObject:e];
+            break;
+            
+        }else{
+            break;
+        }
+        
+    }
+    for (int i = 0; i < 7; i++) {
+        
+        int rdTargetX = rigtUp[i][0];
+        int rdTargetY = rigtUp[i][1];
+        CBLocation *e = [[CBLocation alloc]init];
+        e.x = self.location.x + rdTargetX;
+        e.y = self.location.y + rdTargetY;
+        BOOL isNil = [self.board IsEmpty:e];
+        if (isNil) {
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
+            [moves addObject:e];
+        }else if ([self.board isInsideWithLocation:e]&&[self.board getPieceWithLocation:e].color != self.player){
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
+            [moves addObject:e];
+            break;
+            
+        }else{
+            break;
+        }
+    }
+    for (int i = 0; i < 7; i++) {
+        
+        int luTargetX = leftUp[i][0];
+        int luTargetY = leftUp[i][1];
+        CBLocation *e = [[CBLocation alloc]init];
+        e.x = self.location.x + luTargetX;
+        e.y = self.location.y + luTargetY;
+        BOOL isNil = [self.board IsEmpty:e];
+        if (isNil) {
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
+            [moves addObject:e];
+        }else if ([self.board isInsideWithLocation:e]&&[self.board getPieceWithLocation:e].color != self.player){
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
+            [moves addObject:e];
+            break;
+            
+        }else{
+            break;
+        }
+    }
+    for (int i = 0; i < 7; i++) {
+        
+        int luTargetX = left[i][0];
+        int luTargetY = left[i][1];
+        CBLocation *e = [[CBLocation alloc]init];
+        e.x = self.location.x + luTargetX;
+        e.y = self.location.y + luTargetY;
+        BOOL isNil = [self.board IsEmpty:e];
+        if (isNil) {
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
+            [moves addObject:e];
+        }else if ([self.board isInsideWithLocation:e]&&[self.board getPieceWithLocation:e].color != self.player){
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
+            [moves addObject:e];
+            break;
+            
+        }else{
+            break;
+        }
+    }
+    for (int i = 0; i < 7; i++) {
+        
+        int luTargetX = right[i][0];
+        int luTargetY = right[i][1];
+        CBLocation *e = [[CBLocation alloc]init];
+        e.x = self.location.x + luTargetX;
+        e.y = self.location.y + luTargetY;
+        BOOL isNil = [self.board IsEmpty:e];
+        if (isNil) {
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
+            [moves addObject:e];
+        }else if ([self.board isInsideWithLocation:e]&&[self.board getPieceWithLocation:e].color != self.player){
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
+            [moves addObject:e];
+            break;
+            
+        }else{
+            break;
+        }
+    }
+    for (int i = 0; i < 7; i++) {
+        
+        int luTargetX = down[i][0];
+        int luTargetY = down[i][1];
+        CBLocation *e = [[CBLocation alloc]init];
+        e.x = self.location.x + luTargetX;
+        e.y = self.location.y + luTargetY;
+        BOOL isNil = [self.board IsEmpty:e];
+        if (isNil) {
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
+            [moves addObject:e];
+        }else if ([self.board isInsideWithLocation:e]&&[self.board getPieceWithLocation:e].color != self.player){
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
+            [moves addObject:e];
+            break;
+            
+        }else{
+            break;
+        }
+    }
+    for (int i = 0; i < 7; i++) {
+        
+        int luTargetX = up[i][0];
+        int luTargetY = up[i][1];
+        CBLocation *e = [[CBLocation alloc]init];
+        e.x = self.location.x + luTargetX;
+        e.y = self.location.y + luTargetY;
+        BOOL isNil = [self.board IsEmpty:e];
+        if (isNil) {
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
+            [moves addObject:e];
+        }else if ([self.board isInsideWithLocation:e]&&[self.board getPieceWithLocation:e].color != self.player){
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
+            [moves addObject:e];
+            break;
+            
+        }else{
+            break;
         }
     }
     return moves;
 }
 -(NSArray *)hRules{
-    int target[][2] = {{1,1},{1,-1},
-        {2,2},{2,-2},{-2,2},{-2,-2},
-        {3,3},{3,-3},{-3,3},{-3,-3},
-        {4,4},{4,-4},{-4,4},{-4,-4},
-        {5,5},{5,-5},{-5,5},{-5,-5},
-        {6,6},{6,-6},{-6,6},{-6,-6},
-        {7,7},{7,-7},{-7,7},{-7,-7}
-    };
+    CBLocation *loc = [[CBLocation alloc]init];
+    loc.x = 5;
+    loc.y = 3;
+    CBCPiece *piece = [self.board getPieceWithLocation:loc];
+    NSLog(@"%@",piece.key);
+    int rigtDown[][2] = {{1,1},{2,2},{3,3},{4,4},{5,5},{6,6},{7,7}};
+    int rigtUp[][2] = {{-1,1},{-2,2},{-3,3},{-4,4},{-5,5},{-6,6},{-7,7}};
+    int leftDown[][2] = {{1,-1},{2,-2},{3,-3},{4,-4},{5,-5},{6,-6},{7,-7}};
+    int leftUp[][2] = {{-1,-1},{-2,-2},{-3,-3},{-4,-4},{-5,-5},{-6,-6},{-7,-7}};
+   // int leftUpTarget[][2] = {{1,1},{2,2},{3,3},{4,4},{5,5},{6,6},{7,7}};
     NSMutableArray *moves = [NSMutableArray array];
-    for (int i=0; i<4; i++) {
+    for (int i = 0; i < 7; i++) {
+     
+        int rdTargetX = rigtDown[i][0];
+        int rdTargetY = rigtDown[i][1];
         CBLocation *e = [[CBLocation alloc]init];
-        e.x = self.location.x + target[i][0];
-        e.x = self.location.y + target[i][1];
-        if (![self.board isInsideWithLocation:e]) {
-            continue;
-        }else if([self.board isInsideWithLocation:e]&&[self.board getPieceWithLocation:e].color!=self.player){
+        e.x = self.location.x + rdTargetX;
+        e.y = self.location.y + rdTargetY;
+        BOOL isNil = [self.board IsEmpty:e];
+        if (isNil) {
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
             [moves addObject:e];
-        }else if ([self.board IsEmpty:e]){
+        }else if ([self.board isInsideWithLocation:e]&&[self.board getPieceWithLocation:e].color != self.player){
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
             [moves addObject:e];
+            break;
+            
+        }else{
+            break;
+        }
+    }
+    for (int i = 0; i < 7; i++) {
+        
+        int rdTargetX = leftDown[i][0];
+        int rdTargetY = leftDown[i][1];
+        CBLocation *e = [[CBLocation alloc]init];
+        e.x = self.location.x + rdTargetX;
+        e.y = self.location.y + rdTargetY;
+        BOOL isNil = [self.board IsEmpty:e];
+        if (isNil) {
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
+            [moves addObject:e];
+        }else if ([self.board isInsideWithLocation:e]&&[self.board getPieceWithLocation:e].color != self.player){
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
+            [moves addObject:e];
+            break;
+            
+        }else{
+            break;
+        }
+        
+        }
+    for (int i = 0; i < 7; i++) {
+        
+        int rdTargetX = rigtUp[i][0];
+        int rdTargetY = rigtUp[i][1];
+        CBLocation *e = [[CBLocation alloc]init];
+        e.x = self.location.x + rdTargetX;
+        e.y = self.location.y + rdTargetY;
+        BOOL isNil = [self.board IsEmpty:e];
+        if (isNil) {
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
+            [moves addObject:e];
+        }else if ([self.board isInsideWithLocation:e]&&[self.board getPieceWithLocation:e].color != self.player){
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
+            [moves addObject:e];
+            break;
+            
+        }else{
+            break;
+        }
+    }
+    for (int i = 0; i < 7; i++) {
+        
+        int luTargetX = leftUp[i][0];
+        int luTargetY = leftUp[i][1];
+        CBLocation *e = [[CBLocation alloc]init];
+        e.x = self.location.x + luTargetX;
+        e.y = self.location.y + luTargetY;
+        BOOL isNil = [self.board IsEmpty:e];
+        if (isNil) {
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
+            [moves addObject:e];
+        }else if ([self.board isInsideWithLocation:e]&&[self.board getPieceWithLocation:e].color != self.player){
+            CBCPiece *pi = [self.board getPieceWithLocation:e];
+            NSLog(@"%@",pi.key);
+            [moves addObject:e];
+            break;
+            
+            
+        }else{
+            break;
         }
     }
     return moves;
@@ -129,13 +374,13 @@
 
 -(NSArray *)rRules{
     NSMutableArray *moves = [NSMutableArray array];
-    int yOffset[] = {1,2,3,4,5,6,7,8};
-    int xOffset[] = {1,2,3,4,5,6,7,8,9};
+    int yOffset[] = {1,2,3,4,5,6,7};
+    int xOffset[] = {1,2,3,4,5,6,7};
     BOOL rr = NO;
     BOOL ll = NO;
     BOOL uu = NO;
     BOOL dd = NO;
-    for (int i=0; i<8; i++) {
+    for (int i=0; i<7; i++) {
         int offset = yOffset[i];
         CBLocation * rMove = [[CBLocation alloc]init];
         rMove.x = self.location.x;
@@ -161,7 +406,7 @@
     }
     
     
-    for (int i=0; i<8; i++) {
+    for (int i=0; i<7; i++) {
         int offset = yOffset[i];
         CBLocation * lMove = [[CBLocation alloc]init];
         lMove.x = self.location.x;
@@ -185,7 +430,7 @@
         }
         
     }
-    for (int i=0; i<9; i++) {
+    for (int i=0; i<7; i++) {
         int offset = xOffset[i];
         CBLocation * uMove = [[CBLocation alloc]init];
         uMove.x = self.location.x - offset;
@@ -209,7 +454,7 @@
         }
         
     }
-    for (int i=0; i<9; i++) {
+    for (int i=0; i<7; i++) {
         int offset = xOffset[i];
         CBLocation * dMove = [[CBLocation alloc]init];
         dMove.x = self.location.x + offset;
@@ -247,17 +492,19 @@
         if([self.board IsEmpty:e1]){
             [moves addObject:e1];
         }
-        e1.x = self.location.x+1;
-        e1.y = self.location.y+1;
-        CBCPiece *pi = [self.board getPieceWithLocation:e1];
-        if((pi.color!=self.player)&&![pi.key isEqualToString:@"nil"]&&[self.board isInsideWithLocation:e1]){
-            [moves addObject:e1];
+        CBLocation *e2 = [[CBLocation alloc]init];
+        e2.x = self.location.x+1;
+        e2.y = self.location.y+1;
+        CBCPiece *pi = [self.board getPieceWithLocation:e2];
+        if((pi.color!=self.player)&&![pi.key isEqualToString:@"nil"]&&[self.board isInsideWithLocation:e2]){
+            [moves addObject:e2];
         }
-        e1.x = self.location.x+1;
-        e1.y = self.location.y-1;
-        CBCPiece *pi2 = [self.board getPieceWithLocation:e1];
-        if((pi2.color!=self.player)&&![pi2.key isEqualToString:@"nil"]&&[self.board isInsideWithLocation:e1]){
-            [moves addObject:e1];
+        CBLocation *e3 = [[CBLocation alloc]init];
+        e3.x = self.location.x+1;
+        e3.y = self.location.y-1;
+        CBCPiece *pi2 = [self.board getPieceWithLocation:e3];
+        if((pi2.color!=self.player)&&![pi2.key isEqualToString:@"nil"]&&[self.board isInsideWithLocation:e3]){
+            [moves addObject:e3];
         }
         if(self.location.x==1){
             CBLocation *e = [[CBLocation alloc]init];
@@ -276,21 +523,23 @@
         if([self.board IsEmpty:e1]){
             [moves addObject:e1];
         }
-        e1.x = self.location.x-1;
-        e1.y = self.location.y+1;
-        CBCPiece *pi = [self.board getPieceWithLocation:e1];
-        if((pi.color!=self.player)&&![pi.key isEqualToString:@"nil"]&&[self.board isInsideWithLocation:e1]){
-            [moves addObject:e1];
+         CBLocation *e2 = [[CBLocation alloc]init];
+        e2.x = self.location.x-1;
+        e2.y = self.location.y+1;
+        CBCPiece *pi = [self.board getPieceWithLocation:e2];
+        if((pi.color!=self.player)&&![pi.key isEqualToString:@"nil"]&&[self.board isInsideWithLocation:e2]){
+            [moves addObject:e2];
         }
-        e1.x = self.location.x-1;
-        e1.y = self.location.y-1;
-        CBCPiece *pi2 = [self.board getPieceWithLocation:e1];
-        if((pi2.color!=self.player)&&![pi2.key isEqualToString:@"nil"]&&[self.board isInsideWithLocation:e1]){
-            [moves addObject:e1];
+        CBLocation *e3 = [[CBLocation alloc]init];
+        e3.x = self.location.x-1;
+        e3.y = self.location.y-1;
+        CBCPiece *pi2 = [self.board getPieceWithLocation:e3];
+        if((pi2.color!=self.player)&&![pi2.key isEqualToString:@"nil"]&&[self.board isInsideWithLocation:e3]){
+            [moves addObject:e3];
         }
-        if(self.location.x==1){
+        if(self.location.x==6){
             CBLocation *e = [[CBLocation alloc]init];
-            e.x = self.location.y - 2;
+            e.x = self.location.x - 2;
             e.y = self.location.y;
             if([self.board IsEmpty:e]){
                 [moves addObject:e];
@@ -298,7 +547,7 @@
         }
         
     }
-    return nil;
+    return moves;
 }
 
 @end

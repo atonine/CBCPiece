@@ -78,21 +78,21 @@ static CBIGameControl *_instance;
     [pieces setObject:wr1 forKey:@"wr1"];
     
     
-    CBCPiece *wt0 = [self setPieceWithName:@"bh0" x:6 y:0];
+    CBCPiece *wt0 = [self setPieceWithName:@"wt0" x:6 y:0];
     [pieces setObject:wt0 forKey:@"wt0"];
-    CBCPiece *wt1 = [self setPieceWithName:@"wh0" x:6 y:1];
+    CBCPiece *wt1 = [self setPieceWithName:@"wt1" x:6 y:1];
     [pieces setObject:wt1 forKey:@"wt1"];
-    CBCPiece *wt2 = [self setPieceWithName:@"wh0" x:6 y:2];
+    CBCPiece *wt2 = [self setPieceWithName:@"wt2" x:6 y:2];
     [pieces setObject:wt2 forKey:@"wt2"];
-    CBCPiece *wt3 = [self setPieceWithName:@"wh0" x:6 y:3];
+    CBCPiece *wt3 = [self setPieceWithName:@"wt3" x:6 y:3];
     [pieces setObject:wt3 forKey:@"wt3"];
-    CBCPiece *wt4 = [self setPieceWithName:@"wh0" x:6 y:4];
+    CBCPiece *wt4 = [self setPieceWithName:@"wt4" x:6 y:4];
     [pieces setObject:wt4 forKey:@"wt4"];
-    CBCPiece *wt5 = [self setPieceWithName:@"wh0" x:6 y:5];
+    CBCPiece *wt5 = [self setPieceWithName:@"wt5" x:6 y:5];
     [pieces setObject:wt5 forKey:@"wt5"];
-    CBCPiece *wt6 = [self setPieceWithName:@"wh0" x:6 y:6];
+    CBCPiece *wt6 = [self setPieceWithName:@"wt6" x:6 y:6];
     [pieces setObject:wt6 forKey:@"wt6"];
-    CBCPiece *wt7 = [self setPieceWithName:@"wh0" x:6 y:7];
+    CBCPiece *wt7 = [self setPieceWithName:@"wt7" x:6 y:7];
     [pieces setObject:wt7 forKey:@"wt7"];
     return pieces;
 }
@@ -114,5 +114,16 @@ static CBIGameControl *_instance;
     loc.y = y;
     CBCPiece *chess  = [[CBCPiece alloc]initWithName:name location:loc];
     return chess;
+}
+-(char)hasWin:(CBIBoard *)board{
+    CBCPiece *bb = board.pieceMap[@"bk0"];
+    CBCPiece *rb = board.pieceMap[@"wk0"];
+    if (bb==nil||[bb.key isEqualToString:@"nil"]) {
+        return 'w';
+    }else if(rb==nil||[rb.key isEqualToString:@"nil"]){
+        return 'b';
+    }else{
+        return 'x';
+    }
 }
 @end

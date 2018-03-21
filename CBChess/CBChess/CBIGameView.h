@@ -14,4 +14,6 @@
 
 -(instancetype)initWithBoard:(CBIBoard *)board frame:(CGRect)frame;
 
+-(void)movePieceFromAI:(NSString *)pieceKey location:(CBLocation *)to;
+
 @end
