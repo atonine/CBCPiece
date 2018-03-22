@@ -35,12 +35,23 @@
 }
 
 - (void)viewDidLoad {
+   
+    
     [super viewDidLoad];
+    UIButton *closedBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    closedBtn.frame = CGRectMake(343, 20, 60, 40);
+    [closedBtn setTitle:@"关闭" forState:UIControlStateNormal];
+    //[closedBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    closedBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [closedBtn addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
+   // closedBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     self.board = [self.control setBoard];
     _gameView = [[CBIGameView alloc]initWithBoard:self.board frame:CGRectMake(16, 114, 343, 368)];
     _gameView.image = [UIImage imageNamed:@"ichessboard.jpg"];
     [self.view addSubview:self.gameView];
- //  [self run];
+    [self.view addSubview:closedBtn];
+
+   [self run];
   //  // Do any additional setup after loading the view.
 }
 
@@ -55,6 +66,9 @@
         
     }
     return self;
+}
+-(void)close{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 /*
 #pragma mark - Navigation

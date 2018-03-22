@@ -34,20 +34,89 @@
     }
 }
 -(NSArray *)kRules{
-    int target[][2] = {{1,1},{1,-1},{-1,1},{-1,-1},{1,0},{0,1},{-1,0},{0,-1}};
+  //  int target[][2] = {{1,1},{1,-1},{-1,1},{-1,-1},{1,0},{0,1},{-1,0},{0,-1}};
     NSMutableArray *moves = [NSMutableArray array];
-    for (int i=0; i<4; i++) {
-        CBLocation *e = [[CBLocation alloc]init];
-        e.x = self.location.x + target[i][0];
-        e.x = self.location.y + target[i][1];
-        if (![self.board isInsideWithLocation:e]) {
-            continue;
-        }else if([self.board isInsideWithLocation:e]&&[self.board getPieceWithLocation:e].color!=self.player){
-            [moves addObject:e];
-        }else if ([self.board IsEmpty:e]){
-            [moves addObject:e];
-        }
+    CBLocation *e1 = [[CBLocation alloc]init];
+    e1.x = self.location.x + 1;
+    e1.y = self.location.y;
+    if([self.board IsEmpty:e1]){
+        [moves addObject:e1];
+    }else if([self.board isInsideWithLocation:e1]&&[self.board getPieceWithLocation:e1].color != self.player){
+        [moves addObject:e1];
     }
+    
+    
+    CBLocation *e2 = [[CBLocation alloc]init];
+    e2.x = self.location.x - 1;
+    e2.y = self.location.y;
+    if([self.board IsEmpty:e2]){
+        [moves addObject:e2];
+    }else if([self.board isInsideWithLocation:e2]&&[self.board getPieceWithLocation:e2].color != self.player){
+        [moves addObject:e2];
+    }
+    CBLocation *e3 = [[CBLocation alloc]init];
+    e3.x = self.location.x + 1;
+    e3.y = self.location.y + 1;
+    if([self.board IsEmpty:e3]){
+        [moves addObject:e3];
+    }else if([self.board isInsideWithLocation:e3]&&[self.board getPieceWithLocation:e3].color != self.player){
+        [moves addObject:e3];
+    }
+    
+    CBLocation *e4 = [[CBLocation alloc]init];
+    e4.x = self.location.x + 1;
+    e4.y = self.location.y - 1;
+    if([self.board IsEmpty:e4]){
+        [moves addObject:e4];
+    }else if([self.board isInsideWithLocation:e4]&&[self.board getPieceWithLocation:e4].color != self.player){
+        [moves addObject:e4];
+    }
+    
+    CBLocation *e5 = [[CBLocation alloc]init];
+    e5.x = self.location.x - 1;
+    e5.y = self.location.y - 1;
+    if([self.board IsEmpty:e4]){
+        [moves addObject:e4];
+    }else if([self.board isInsideWithLocation:e5]&&[self.board getPieceWithLocation:e5].color != self.player){
+        [moves addObject:e5];
+    }
+    CBLocation *e6 = [[CBLocation alloc]init];
+    e6.x = self.location.x - 1;
+    e6.y = self.location.y + 1;
+    if([self.board IsEmpty:e6]){
+        [moves addObject:e6];
+    }else if([self.board isInsideWithLocation:e6]&&[self.board getPieceWithLocation:e6].color != self.player){
+        [moves addObject:e6];
+    }
+    CBLocation *e7 = [[CBLocation alloc]init];
+    e7.x = self.location.x;
+    e7.y = self.location.y - 1;
+    if([self.board IsEmpty:e6]){
+        [moves addObject:e6];
+    }else if([self.board isInsideWithLocation:e7]&&[self.board getPieceWithLocation:e7].color != self.player){
+        [moves addObject:e7];
+    }
+    
+    CBLocation *e8 = [[CBLocation alloc]init];
+    e8.x = self.location.x ;
+    e8.y = self.location.y + 1;
+    if([self.board IsEmpty:e8]){
+        [moves addObject:e8];
+    }else if([self.board isInsideWithLocation:e8]&&[self.board getPieceWithLocation:e8].color != self.player){
+        [moves addObject:e8];
+    }
+//    for (int i=0; i<4; i++) {
+//        CBLocation *e = [[CBLocation alloc]init];
+//        e.x = self.location.x + target[i][0];
+//        e.x = self.location.y + target[i][1];
+//        if (![self.board isInsideWithLocation:e]) {
+//            continue;
+//        }else if([self.board isInsideWithLocation:e]&&[self.board getPieceWithLocation:e].color!=self.player){
+//            [moves addObject:e];
+//        }else if ([self.board IsEmpty:e]){
+//            [moves addObject:e];
+//        }
+//    }
     
     
     

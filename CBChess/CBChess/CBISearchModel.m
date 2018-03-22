@@ -15,9 +15,11 @@
 
 -(CBCAlpaBetaNode *)search2:(CBIBoard *)board{
     _board = board;
-    NSInteger size = [board.pieceMap allKeys].count;
-    int random = [self getRandomNumber:0 to:size];
-    NSArray *moves = [self generate];
+      NSArray *moves = [self generate];
+    NSInteger size = [moves count];
+    int random = [self getRandomNumber:0 to:size-1];
+  
+    
     CBCAlpaBetaNode *best = moves[random];
     return best;
 }

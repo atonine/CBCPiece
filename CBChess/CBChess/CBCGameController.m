@@ -51,6 +51,13 @@ String : CBCChessView
     self.gameView .image = [UIImage imageNamed:@"ChessBoard.png"];
     [self.view addSubview:self.gameView];
     [super viewDidLoad];
+    UIButton *closedBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    closedBtn.frame = CGRectMake(343, 20, 60, 40);
+    [closedBtn setTitle:@"关闭" forState:UIControlStateNormal];
+    //[closedBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    closedBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [closedBtn addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:closedBtn];
     [self run3];
     // Do any additional setup after loading the view.
 }
@@ -100,6 +107,9 @@ String : CBCChessView
     
     
     
+}
+-(void)close{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 -(void)run2{
             NSTimer *timer = [NSTimer timerWithTimeInterval:0.1 repeats:YES block:^(NSTimer * _Nonnull timer) {
