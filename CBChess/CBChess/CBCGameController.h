@@ -10,4 +10,9 @@
 
 @interface CBCGameController : UIViewController
 
+/**
+ 困难值
+ */
+@property (nonatomic,strong)  NSString * hard;
+
 @end

@@ -32,6 +32,9 @@ String : CBCChessView
 
 
 
+
+
+
 @end
 
 @implementation CBCGameController
@@ -51,17 +54,28 @@ String : CBCChessView
     self.gameView .image = [UIImage imageNamed:@"ChessBoard.png"];
     [self.view addSubview:self.gameView];
     [super viewDidLoad];
+ 
     UIButton *closedBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    closedBtn.frame = CGRectMake(343, 20, 60, 40);
+    closedBtn.frame = CGRectMake(283, 20, 60, 40);
     [closedBtn setTitle:@"关闭" forState:UIControlStateNormal];
     //[closedBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     closedBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [closedBtn addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:closedBtn];
-    [self run3];
+   
     // Do any additional setup after loading the view.
 }
-
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if ([self.hard isEqualToString:@"1"]) {
+        [self run2];
+    }else if ([self.hard isEqualToString:@"2"]){
+        [self run3];
+    }
+}
+-(void)setHard:(NSString *)hard{
+    _hard = hard;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
@@ -143,8 +157,33 @@ String : CBCChessView
         CBCAlpaBetaNode *result = [searchModel search:self.board];
         [self.gameView movePieceFromAI:result.piece location:result.to];
         [self.board updatePiece:result.piece newLocation:result.to];
-        if ([self.control hasWin:self.board]!='x') {
-            NSLog(@"结束了");
+        if ([self.control hasWin:self.board]=='b') {
+            UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"你输了" message:@"黑方获胜,您输了" preferredStyle:UIAlertControllerStyleActionSheet];
+            UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"重来" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self viewDidLoad];
+                
+            }];
+            UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"退出" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
+            [actionSheet addAction:action1];
+            [actionSheet addAction:action2];
+            [self presentViewController:actionSheet animated:YES completion:nil];
+            return ;
+        }
+        if ([self.control hasWin:self.board]=='r') {
+            UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:@"你赢了" message:@"恭喜你,你赢了" preferredStyle:UIAlertControllerStyleActionSheet];
+            UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"重来" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self viewDidLoad];
+                
+            }];
+            UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"退出" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+                
+            }];
+            [actionSheet addAction:action1];
+            [actionSheet addAction:action2];
+            [self presentViewController:actionSheet animated:YES completion:nil];
             return ;
         }
     }];

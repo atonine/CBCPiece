@@ -23,6 +23,7 @@
 
 -(CBCBoard *)setBoard;
 
+
 -(CBCBoard *)moveChess:(NSString *)key location:(CBLocation *)loc;
 
 //-(void)responseMoveChess:(CBCBoard *)board GameView:(CBCGameView *)view;

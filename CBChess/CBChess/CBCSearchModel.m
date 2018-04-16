@@ -84,19 +84,17 @@ static int DEPTH = 2;
         __block NSInteger temp = 0;
         if (depth == 2) {
             if (isMax) {
-                dispatch_queue_t queue =  dispatch_queue_create("new1", DISPATCH_QUEUE_SERIAL);
-                dispatch_sync(queue, ^{
+              
                     temp = MAX(c_alpha, [self alphaBeta:c_depth-1 alpha:c_alpha beta:c_beta isMax:NO]);
-                });
-                alpha = temp;
+                
+                    alpha = temp;
                 
                
             }else{
-                dispatch_queue_t queue =  dispatch_queue_create("new2", DISPATCH_QUEUE_SERIAL);
-                dispatch_sync(queue, ^{
+                
                     temp= MIN(c_beta, [self alphaBeta:c_depth-1 alpha:c_alpha beta:c_beta isMax:YES]);
-                });
-                beta = temp;
+               
+                    beta = temp;
                 
             }
         }else{
